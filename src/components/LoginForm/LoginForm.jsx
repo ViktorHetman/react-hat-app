@@ -1,15 +1,31 @@
 import { useForm } from 'react-hook-form'
+import { useDispatch } from 'react-redux'
+
+import { setUser } from '../../store/slices/loginSlice'
+
 import './LoginForm.css'
 
 function LoginForm() {
+  const dispatch = useDispatch()
   const {
     register,
+    watch,
     formState: { errors },
     handleSubmit,
     reset,
   } = useForm({
     mode: 'onBlur',
   })
+
+  const watchAllFields = watch()
+
+  dispatch(
+    setUser({
+      email: watchAllFields.email,
+      password: watchAllFields.password,
+      userAppId: watchAllFields.appId,
+    })
+  )
 
   const onSubmit = () => {
     reset()
@@ -55,7 +71,7 @@ function LoginForm() {
         <div style={{ height: 20 }}>
           {errors?.appId && <p>{errors?.appId?.message || 'Ошибка!'}</p>}
         </div>
-        <input type="submit" />
+        <button type="submit">Sign In!</button>
       </form>
     </div>
   )

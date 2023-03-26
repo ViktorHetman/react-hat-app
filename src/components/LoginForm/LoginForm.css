@@ -66,6 +66,7 @@ input[type='submit'] {
   font-size: 16px;
   font-weight: 100;
   letter-spacing: 10px;
+  width: 100%;
 }
 
 button[type='submit']:hover,
@@ -88,12 +89,6 @@ input:disabled {
 
 input[type='button']:hover {
   transition: 0.3s all;
-}
-
-button[type='submit'],
-input[type='button'],
-input[type='submit'] {
-  -webkit-appearance: none;
 }
 
 .App {
