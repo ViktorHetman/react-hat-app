@@ -11,5 +11,12 @@ export async function getTokens(email, password, userAppId) {
     password: password,
     appId: userAppId,
   })
-  console.log(res)
+  const token = {
+    accesToken: res.data.data.accessToken,
+    accessTokenEndTime: res.data.data.accessTokenEndTime,
+    cabinetUserId: res.data.data.cabinetUserId,
+    refreshToken: res.data.data.refreshToken,
+    refreshTokenEndTime: res.data.data.refreshTokenEndTime,
+  }
+  return token
 }
