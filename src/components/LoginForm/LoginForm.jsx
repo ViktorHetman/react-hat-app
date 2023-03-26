@@ -1,7 +1,8 @@
 import { useForm } from 'react-hook-form'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 import { setUser } from '../../store/slices/loginSlice'
+import { getTokens } from '../../services/getTokens'
 
 import './LoginForm.css'
 
@@ -27,8 +28,13 @@ function LoginForm() {
     })
   )
 
+  const email = useSelector((store) => store.login.email)
+  const password = useSelector((store) => store.login.password)
+  const appId = useSelector((store) => store.login.userAppId)
+
   const onSubmit = () => {
     reset()
+    getTokens(email, password, appId)
   }
 
   return (
