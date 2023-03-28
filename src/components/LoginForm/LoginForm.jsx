@@ -13,7 +13,6 @@ function LoginForm() {
     watch,
     formState: { errors },
     handleSubmit,
-    reset,
   } = useForm({
     mode: 'onBlur',
   })
@@ -28,14 +27,21 @@ function LoginForm() {
     })
   )
 
-  const email = useSelector((store) => store.login.email)
-  const password = useSelector((store) => store.login.password)
-  const appId = useSelector((store) => store.login.userAppId)
+  const user = {
+    email: useSelector((state) => state.login.email),
+    password: useSelector((state) => state.login.password),
+    appId: useSelector((state) => state.login.userAppId),
+  }
+
+  const userr = JSON.parse(localStorage.getItem('user'))
+  const accessToken = userr.token.accessToken
+  console.log(accessToken)
 
   const onSubmit = () => {
-    reset()
-    getTokens(email, password, appId)
+    dispatch(getTokens(user))
   }
+
+  const token = useSelector((state) => state.login.token)
 
   return (
     <div>
@@ -50,7 +56,7 @@ function LoginForm() {
             })}
           />
         </label>
-        <div style={{ height: 20 }}>
+        <div style={{ height: 10 }}>
           {errors?.email && <p>{errors?.email?.message || 'Ошибка!'}</p>}
         </div>
         <label>
@@ -62,7 +68,7 @@ function LoginForm() {
             })}
           />
         </label>
-        <div style={{ height: 20 }}>
+        <div style={{ height: 10 }}>
           {errors?.password && <p>{errors?.password?.message || 'Ошибка!'}</p>}
         </div>
         <label>
@@ -74,7 +80,7 @@ function LoginForm() {
             })}
           />
         </label>
-        <div style={{ height: 20 }}>
+        <div style={{ height: 10 }}>
           {errors?.appId && <p>{errors?.appId?.message || 'Ошибка!'}</p>}
         </div>
         <button type="submit">Sign In!</button>

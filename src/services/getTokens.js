@@ -1,22 +1,23 @@
 import axios from 'axios'
+import { createAsyncThunk } from '@reduxjs/toolkit'
 
 const WEB_URL = 'https://api.chatapp.online/v1/tokens'
 
-export async function getTokens(email, password, userAppId) {
+export const getTokens = createAsyncThunk('tokens/getTokens', async (user) => {
   const res = await axios.post(WEB_URL, {
     headers: {
       'Content-Type': 'application/json',
     },
-    email: email,
-    password: password,
-    appId: userAppId,
+    email: user.email,
+    password: user.password,
+    appId: user.appId,
   })
   const token = {
-    accesToken: res.data.data.accessToken,
+    accessToken: res.data.data.accessToken,
     accessTokenEndTime: res.data.data.accessTokenEndTime,
     cabinetUserId: res.data.data.cabinetUserId,
     refreshToken: res.data.data.refreshToken,
     refreshTokenEndTime: res.data.data.refreshTokenEndTime,
   }
   return token
-}
+})
