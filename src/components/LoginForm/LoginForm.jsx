@@ -6,6 +6,7 @@ import { setUser } from '../../store/slices/loginSlice'
 import { getTokens } from '../../services/getTokens'
 
 import './LoginForm.css'
+import { useEffect } from 'react'
 
 function LoginForm() {
   const navigate = useNavigate()
@@ -35,9 +36,22 @@ function LoginForm() {
     appId: useSelector((state) => state.login.userAppId),
   }
 
+  const error = useSelector((state) => state.login.error)
+
+  useEffect(() => {
+    navigate('/login')
+  }, [navigate])
+
   const onSubmit = () => {
     dispatch(getTokens(user))
-    navigate('/')
+    dispatch(
+      setUser({
+        error: null,
+      })
+    )
+    if (error === null) {
+      navigate('/')
+    }
   }
 
   return (

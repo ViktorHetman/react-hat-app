@@ -21,3 +21,23 @@ export const getTokens = createAsyncThunk('tokens/getTokens', async (user) => {
   }
   return token
 })
+
+export const refreshTokens = createAsyncThunk(
+  'tokens/refreshTokens',
+  async (token) => {
+    const res = await axios.post(`${WEB_URL}/refresh`, {
+      headers: {
+        Refresh: token,
+        Accept: 'application/json',
+      },
+    })
+    const newTokens = {
+      accessToken: res.data.data.accessToken,
+      accessTokenEndTime: res.data.data.accessTokenEndTime,
+      cabinetUserId: res.data.data.cabinetUserId,
+      refreshToken: res.data.data.refreshToken,
+      refreshTokenEndTime: res.data.data.refreshTokenEndTime,
+    }
+    return newTokens
+  }
+)
