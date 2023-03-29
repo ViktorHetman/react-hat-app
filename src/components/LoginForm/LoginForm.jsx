@@ -1,5 +1,6 @@
-import { useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
+import { useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
 
 import { setUser } from '../../store/slices/loginSlice'
 import { getTokens } from '../../services/getTokens'
@@ -7,6 +8,7 @@ import { getTokens } from '../../services/getTokens'
 import './LoginForm.css'
 
 function LoginForm() {
+  const navigate = useNavigate()
   const dispatch = useDispatch()
   const {
     register,
@@ -33,15 +35,10 @@ function LoginForm() {
     appId: useSelector((state) => state.login.userAppId),
   }
 
-  const userr = JSON.parse(localStorage.getItem('user'))
-  const accessToken = userr.token.accessToken
-  console.log(accessToken)
-
   const onSubmit = () => {
     dispatch(getTokens(user))
+    navigate('/')
   }
-
-  const token = useSelector((state) => state.login.token)
 
   return (
     <div>
