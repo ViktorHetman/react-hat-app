@@ -9,6 +9,8 @@ export const store = configureStore({
 })
 
 store.subscribe(() => {
-  const state = store.getState().login.token.accessToken
-  localStorage.setItem('token', JSON.stringify(state))
+  const accessToken = store.getState().login.token.accessToken
+  const refreshToken = store.getState().login.token.refreshToken
+  localStorage.setItem('token', JSON.stringify(accessToken))
+  localStorage.setItem('refresh', JSON.stringify(refreshToken))
 })
