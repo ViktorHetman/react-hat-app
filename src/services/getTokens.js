@@ -1,4 +1,5 @@
 import axios from 'axios'
+
 import { createAsyncThunk } from '@reduxjs/toolkit'
 
 const WEB_URL = 'https://api.chatapp.online/v1/tokens'

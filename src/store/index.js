@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
 
 import loginReducer from './slices/loginSlice'
+import licenseReducer from './slices/licenseSlice'
 
 export const store = configureStore({
   reducer: {
     login: loginReducer,
+    licenses: licenseReducer,
   },
 })
 
