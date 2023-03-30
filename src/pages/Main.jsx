@@ -7,24 +7,22 @@ import { getLicenses } from '../services/getUserLicenses'
 function Main() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  const data = useSelector((state) => state.licenses.licenses)
-  //const token = localStorage.getItem('token')
+  const token = useSelector((state) => state.login.token.accessToken)
 
   const handleClick = () => {
     localStorage.removeItem('token')
+    localStorage.removeItem('refresh')
     navigate('/login')
   }
 
-  const getData = () => {
-    dispatch(getLicenses())
-    console.log(data)
-  }
+  useEffect(() => {
+    dispatch(getLicenses(token))
+  }, [dispatch, token])
 
   return (
     <>
       <h1>Hi!</h1>
       <button onClick={handleClick}>Return to Login</button>
-      <button onClick={getData}> Get Data!</button>
     </>
   )
 }
