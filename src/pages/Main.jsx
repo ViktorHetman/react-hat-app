@@ -1,11 +1,10 @@
 import { useNavigate } from 'react-router-dom'
-
 import { useSelector } from 'react-redux'
 
 function Main() {
   const navigate = useNavigate()
-
-  const error = useSelector((state) => state.login.error)
+  const token = useSelector((state) => state.login.token)
+  const { accessToken } = token
 
   const handleClick = () => {
     localStorage.removeItem('user')
@@ -14,7 +13,7 @@ function Main() {
 
   return (
     <>
-      {error === null ? (
+      {!!accessToken ? (
         <h1>Hi!</h1>
       ) : (
         <button onClick={handleClick}>Return to Login</button>

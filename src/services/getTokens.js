@@ -27,7 +27,7 @@ export const refreshTokens = createAsyncThunk(
   async (token) => {
     const res = await axios.post(`${WEB_URL}/refresh`, {
       headers: {
-        Refresh: token,
+        Refresh: token.refreshToken,
         Accept: 'application/json',
       },
     })

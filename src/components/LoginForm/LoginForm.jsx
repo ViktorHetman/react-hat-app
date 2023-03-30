@@ -1,12 +1,13 @@
-import { useDispatch, useSelector } from 'react-redux'
+import { useEffect } from 'react'
+
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 
 import { setUser } from '../../store/slices/loginSlice'
 import { getTokens } from '../../services/getTokens'
 
 import './LoginForm.css'
-import { useEffect } from 'react'
 
 function LoginForm() {
   const navigate = useNavigate()

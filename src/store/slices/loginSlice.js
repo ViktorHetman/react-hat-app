@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-import { getTokens } from '../../services/getTokens'
+import { getTokens, refreshTokens } from '../../services/getTokens'
 
 const loginSlice = createSlice({
   name: 'login',
@@ -24,7 +24,15 @@ const loginSlice = createSlice({
       .addCase(getTokens.pending, (state) => {
         state.status = 'loading'
       })
+      .addCase(refreshTokens.pending, (state) => {
+        state.status = 'loading'
+      })
       .addCase(getTokens.fulfilled, (state, action) => {
+        state.status = 'fullfield'
+        state.token = action.payload
+        state.error = null
+      })
+      .addCase(refreshTokens.fulfilled, (state, action) => {
         state.status = 'fullfield'
         state.token = action.payload
         state.error = null
@@ -33,6 +41,10 @@ const loginSlice = createSlice({
         state.status = 'rejected'
         state.error = action.error.message
         alert('Enter valid information!')
+      })
+      .addCase(refreshTokens.rejected, (state, action) => {
+        state.status = 'rejected'
+        state.error = action.error.message
       })
   },
 })

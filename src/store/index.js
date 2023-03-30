@@ -1,4 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
+
 import loginReducer from './slices/loginSlice'
 
 export const store = configureStore({
@@ -8,6 +9,6 @@ export const store = configureStore({
 })
 
 store.subscribe(() => {
-  const state = store.getState().login
-  localStorage.setItem('user', JSON.stringify(state))
+  const state = store.getState().login.token.accessToken
+  localStorage.setItem('token', JSON.stringify(state))
 })
