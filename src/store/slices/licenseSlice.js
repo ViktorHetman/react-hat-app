@@ -17,12 +17,12 @@ const licenseSlice = createSlice({
       })
       .addCase(getLicenses.fulfilled, (state, action) => {
         state.status = 'fulfilled'
-        state.licenses = action.payload
+        state.licenses = action.payload.data
         state.error = null
       })
       .addCase(getLicenses.rejected, (state, action) => {
         state.status = 'rejected'
-        state.error = action.error.message
+        console.log(action.error.message)
       })
   },
 })

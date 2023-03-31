@@ -20,5 +20,7 @@ export const getTokens = createAsyncThunk('tokens/getTokens', async (user) => {
     refreshToken: res.data.data.refreshToken,
     refreshTokenEndTime: res.data.data.refreshTokenEndTime,
   }
+  localStorage.setItem('token', res.data.data.accessToken)
+  localStorage.setItem('refresh', res.data.data.refreshToken)
   return token
 })

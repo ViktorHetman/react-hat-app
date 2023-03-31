@@ -10,7 +10,7 @@ instance.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem('token')
     if (token) {
-      config.headers.Authorization = JSON.parse(token)
+      config.headers.Authorization = token
     }
     return config
   },
@@ -25,10 +25,7 @@ instance.interceptors.response.use(
   },
   async (error) => {
     const originalRequest = error.config
-    if (
-      (error.response.status === 401 || error.response.status === 403) &&
-      !originalRequest._retry
-    ) {
+    if (error.response.status === 401 && !originalRequest._retry) {
       originalRequest._retry = true
     }
 
@@ -36,7 +33,7 @@ instance.interceptors.response.use(
       const refreshToken = localStorage.getItem('refresh')
       const response = await axios.post(`${WEB_URL}/tokens/refresh`, {
         headers: {
-          Refresh: JSON.parse(refreshToken),
+          Refresh: refreshToken,
           Accept: 'application/json',
         },
       })
@@ -46,9 +43,7 @@ instance.interceptors.response.use(
 
       return instance.request(originalRequest)
     } catch (e) {
-      localStorage.removeItem('token')
-      localStorage.removeItem('refresh')
-      window.location.replace('/login')
+      console.log(e)
     }
   }
 )
