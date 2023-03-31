@@ -1,21 +1,28 @@
 import { useEffect } from 'react'
 
 import { useDispatch } from 'react-redux'
+import { Button } from '@mui/material'
 
 import { getContacts } from '../../../services/getUserLicenses'
 
-function MessengerContacts() {
-  // const licenseId = localStorage.getItem('licenseId')
-  // const messengerType = localStorage.getItem('messengerType')
-  // const token = localStorage.getItem('token')
+import styles from './MessengerContacts.module.css'
 
+function MessengerContacts() {
   const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(getContacts())
   }, [dispatch])
 
-  return <div>MessengerContacts</div>
+  return (
+    <>
+      <input type="text" placeholder="searchbar" />
+      <div className={styles.contact_field}>
+        <Button variant="outlined">Recent</Button>
+        <Button variant="outlined">All contacts</Button>
+      </div>
+    </>
+  )
 }
 
 export default MessengerContacts
