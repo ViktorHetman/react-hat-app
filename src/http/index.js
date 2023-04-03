@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const WEB_URL = 'https://api.chatapp.online/v1'
+import { WEB_URL } from '../constants/WEB_URL'
 
 const instance = axios.create({
   WEB_URL: WEB_URL,
@@ -33,7 +33,7 @@ instance.interceptors.response.use(
       const refreshToken = localStorage.getItem('refresh')
       const response = await axios.post(`${WEB_URL}/tokens/refresh`, {
         headers: {
-          Refresh: JSON.stringify(refreshToken),
+          Refresh: refreshToken,
           Accept: 'application/json',
         },
       })
@@ -44,6 +44,7 @@ instance.interceptors.response.use(
       return instance.request(originalRequest)
     } catch (e) {
       console.log(e)
+      instance.request(originalRequest)
     }
   }
 )

@@ -2,10 +2,10 @@ import axios from 'axios'
 
 import { createAsyncThunk } from '@reduxjs/toolkit'
 
-const WEB_URL = 'https://api.chatapp.online/v1/tokens'
+import { WEB_URL } from '../constants/WEB_URL'
 
 export const getTokens = createAsyncThunk('tokens/getTokens', async (user) => {
-  const res = await axios.post(WEB_URL, {
+  const res = await axios.post(`${WEB_URL}/tokens`, {
     headers: {
       'Content-Type': 'application/json',
     },
