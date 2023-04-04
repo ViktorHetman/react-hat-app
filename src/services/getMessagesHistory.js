@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 
-import { WEB_URL } from '../constants/WEB_URL'
 import instance from '../http'
+import { WEB_URL } from '../constants/WEB_URL'
 
 export const getMessagesHistory = createAsyncThunk(
   'messages/getMessages',

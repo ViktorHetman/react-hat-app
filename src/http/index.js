@@ -33,7 +33,7 @@ instance.interceptors.response.use(
       const refreshToken = localStorage.getItem('refresh')
       const response = await axios.post(`${WEB_URL}/tokens/refresh`, {
         headers: {
-          Refresh: refreshToken,
+          Refresh: JSON.stringify(refreshToken),
           Accept: 'application/json',
         },
       })

@@ -5,6 +5,7 @@ import storage from 'redux-persist/lib/storage'
 import loginReducer from './slices/loginSlice'
 import licenseReducer from './slices/licenseSlice'
 import contactsReducer from './slices/contactsSlice'
+import messegesReducer from './slices/messegesSlice'
 
 const persistConfig = {
   key: 'root',
@@ -18,6 +19,7 @@ export const store = configureStore({
     login: loginReducer,
     licenses: licenseReducer,
     persisted: persistedReducer,
+    messages: messegesReducer,
   },
 })
 

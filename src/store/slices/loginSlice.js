@@ -25,7 +25,7 @@ const loginSlice = createSlice({
         state.status = 'loading'
       })
       .addCase(getTokens.fulfilled, (state, action) => {
-        state.status = 'fullfield'
+        state.status = 'fulfilled'
         state.token = action.payload
         state.error = null
       })

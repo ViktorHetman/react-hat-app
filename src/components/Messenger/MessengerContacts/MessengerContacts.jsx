@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { Button } from '@mui/material'
 import SearchIcon from '@mui/icons-material/Search'
@@ -10,6 +10,7 @@ import { getMessagesHistory } from '../../../services/getMessagesHistory'
 import MessengerContactCard from '../MessengerContactCard/MessengerContactCard'
 
 import styles from './MessengerContacts.module.css'
+import { setName } from '../../../store/slices/contactsSlice'
 
 function MessengerContacts() {
   const [active, setActive] = useState('false')
@@ -28,7 +29,9 @@ function MessengerContacts() {
   const allContactsLocal = localStorage.getItem('persist:root')
   const allContactsJSON = JSON.parse(allContactsLocal)
   const allContacts = JSON.parse(allContactsJSON.userContacts)
-  console.log(allContacts)
+
+  const data = useSelector((state) => state.messages.allMesseges)
+  console.log(data)
 
   const setAllContacts = () => {
     setActive(true)
@@ -36,6 +39,16 @@ function MessengerContacts() {
 
   const setRecentContacts = () => {
     setActive(false)
+  }
+
+  const userInfoHandler = (id, name, phone) => {
+    dispatch(getMessagesHistory(id))
+    dispatch(
+      setName({
+        userName: name,
+        userPhone: phone,
+      })
+    )
   }
 
   return (
@@ -63,6 +76,7 @@ function MessengerContacts() {
           All contacts
         </Button>
       </div>
+      <hr />
       <div className={styles.container_list}>
         {active &&
           allContacts?.items
@@ -71,7 +85,7 @@ function MessengerContacts() {
               <div
                 className={styles.contacts}
                 key={item.id}
-                onClick={() => dispatch(getMessagesHistory(item.id))}
+                onClick={() => userInfoHandler(item.id, item.name, item.phone)}
               >
                 <MessengerContactCard name={item.name} phone={item.phone} />
                 <hr />

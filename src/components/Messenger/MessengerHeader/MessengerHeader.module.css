@@ -1,5 +1,18 @@
 .header {
   height: 15vh;
   width: 100%;
-  background-color: greenyellow;
+  background-color: black;
+  color: white;
+}
+
+.header_content {
+  display: flex;
+  margin-left: 20px;
+  padding-top: 15px;
+  align-items: center;
+  font-size: 30px;
+}
+
+.header_phone {
+  margin-left: 20px;
 }

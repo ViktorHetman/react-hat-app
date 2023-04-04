@@ -16,14 +16,12 @@ function MessengerBody() {
 
   useEffect(() => {
     dispatch(getLicenses(token))
-    if (!token) {
-    }
   }, [dispatch, token])
 
   return (
     <>
       {!!token && (
-        <Grid container spacing={1}>
+        <Grid container>
           <Grid item xs={3}>
             <MessengerContacts />
           </Grid>

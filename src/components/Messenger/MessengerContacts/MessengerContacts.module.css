@@ -29,11 +29,6 @@ hr {
   width: 100%;
 }
 
-.container {
-  border-right: 3px solid #cdcdcd;
-  height: 15vh;
-}
-
 .container_list {
   height: 100vh;
   overflow: scroll;

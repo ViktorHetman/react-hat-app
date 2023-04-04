@@ -6,10 +6,17 @@ const contactsSlice = createSlice({
   name: 'contacts',
   initialState: {
     userContacts: [],
+    userName: '',
+    userPhone: '',
     status: '',
     error: null,
   },
-  reducers: {},
+  reducers: {
+    setName(state, action) {
+      state.userName = action.payload.userName
+      state.userPhone = action.payload.userPhone
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getContacts.pending, (state) => {
@@ -26,5 +33,6 @@ const contactsSlice = createSlice({
       })
   },
 })
+export const { setName } = contactsSlice.actions
 
 export default contactsSlice.reducer
