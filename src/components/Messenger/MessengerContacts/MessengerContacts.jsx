@@ -4,13 +4,15 @@ import { useNavigate } from 'react-router-dom'
 import { Button } from '@mui/material'
 import SearchIcon from '@mui/icons-material/Search'
 
-import { getContacts } from '../../../services/getUserLicenses'
-import { getMessagesHistory } from '../../../services/getMessagesHistory'
-
 import MessengerContactCard from '../MessengerContactCard/MessengerContactCard'
 
-import styles from './MessengerContacts.module.css'
+import { getMessagesHistory } from '../../../services/getMessagesHistory'
+import { getContacts } from '../../../services/getUserLicenses'
+
 import { setName } from '../../../store/slices/contactsSlice'
+import { setInfo } from '../../../store/slices/sendMessageSlice'
+
+import styles from './MessengerContacts.module.css'
 
 function MessengerContacts() {
   const [active, setActive] = useState('false')
@@ -43,6 +45,11 @@ function MessengerContacts() {
   }
 
   const userInfoHandler = (id, name, phone) => {
+    dispatch(
+      setInfo({
+        chatId: id,
+      })
+    )
     dispatch(getMessagesHistory(id))
     dispatch(
       setName({

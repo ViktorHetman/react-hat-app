@@ -2,14 +2,31 @@
   background-color: white;
   height: 14vh;
   border-top: 1px solid black;
+  position: relative;
 }
 
 .text_area {
-  width: 95%;
+  width: 90%;
 }
 
 .icon {
+  position: absolute;
   margin-top: 35px;
-  margin-left: 10px;
   cursor: pointer;
+  bottom: 10px;
+  left: 7px;
+}
+
+.btn {
+  position: inherit;
+  height: 10px;
+  max-width: 10px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.send_container {
+  position: absolute;
+  bottom: 100px;
+  left: 70vw;
 }

@@ -6,6 +6,7 @@ import loginReducer from './slices/loginSlice'
 import licenseReducer from './slices/licenseSlice'
 import contactsReducer from './slices/contactsSlice'
 import messegesReducer from './slices/messegesSlice'
+import sendMessageReducer from './slices/sendMessageSlice'
 
 const persistConfig = {
   key: 'root',
@@ -20,6 +21,7 @@ export const store = configureStore({
     licenses: licenseReducer,
     persisted: persistedReducer,
     messages: messegesReducer,
+    sendMessage: sendMessageReducer,
   },
 })
 

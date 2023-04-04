@@ -1,10 +1,21 @@
 import { useSelector } from 'react-redux'
 
+import pusher from '../../../pusher/pusher'
+
 import styles from './MessengerContent.module.css'
 
 function MessengerContent() {
   const messages = useSelector((state) => state.messages.allMesseges)
   const sortedMessages = messages.slice().reverse()
+
+  const license = localStorage.getItem('licenseId')
+  const channel = pusher.subscribe(
+    `private-v1.licenses.${license}.messengers.grWhatsApp`
+  )
+
+  channel.bind('message', (data) => {
+    console.log(data)
+  })
 
   return (
     <div className={styles.container}>
