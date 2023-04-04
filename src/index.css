@@ -7,6 +7,20 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100vh;
+}
+
+body::-webkit-scrollbar {
+  width: 10px;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: #cdcdcd;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #573424;
+  border-radius: 20px;
 }
 
 code {

@@ -7,8 +7,8 @@ import { getLicenses } from '../../services/getUserLicenses'
 
 import MessengerContacts from './MessengerContacts/MessengerContacts'
 import MessengerHeader from './MessengerHeader/MessengerHeader'
-
-import styles from './MessengerBody.module.css'
+import MessengerContent from './MessengerContent/MessengerContent'
+import MessengerInput from './MessengerInput/MessengerInput'
 
 function MessengerBody() {
   const dispatch = useDispatch()
@@ -28,7 +28,10 @@ function MessengerBody() {
           <Grid item xs={9}>
             <MessengerHeader />
             <Grid>
-              <div className={styles.container}>MESSENGER CONTENT</div>
+              <MessengerContent />
+            </Grid>
+            <Grid>
+              <MessengerInput />
             </Grid>
           </Grid>
         </Grid>

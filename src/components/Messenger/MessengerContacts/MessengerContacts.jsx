@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { Button } from '@mui/material'
 import SearchIcon from '@mui/icons-material/Search'
@@ -24,14 +24,14 @@ function MessengerContacts() {
   const handleLogout = () => {
     localStorage.removeItem('token')
     localStorage.removeItem('refresh')
+    localStorage.removeItem('licenseId')
+    localStorage.removeItem('messengerType')
+    localStorage.removeItem('persist:root')
     navigate('/login')
   }
   const allContactsLocal = localStorage.getItem('persist:root')
   const allContactsJSON = JSON.parse(allContactsLocal)
   const allContacts = JSON.parse(allContactsJSON.userContacts)
-
-  const data = useSelector((state) => state.messages.allMesseges)
-  console.log(data)
 
   const setAllContacts = () => {
     setActive(true)

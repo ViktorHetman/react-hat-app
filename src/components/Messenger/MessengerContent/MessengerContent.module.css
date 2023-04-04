@@ -1,0 +1,15 @@
+.container {
+  height: 90vh;
+  background-color: white;
+}
+
+.from_me {
+  text-align: right;
+  margin-right: 5px;
+}
+
+.from_contact {
+  text-align: left;
+  margin-left: 5px;
+  max-width: 250px;
+}

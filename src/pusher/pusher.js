@@ -1,6 +1,7 @@
 import Pusher from 'pusher-js/types/src/core/pusher'
 
 const token = localStorage.getItem('token')
+const license = localStorage.getItem('licenseId')
 
 const pusher = new Pusher('ChatsAppApiProdKey', {
   wsHost: 'socket.chatapp.online',
@@ -16,11 +17,13 @@ const pusher = new Pusher('ChatsAppApiProdKey', {
   forceTLS: true,
   cluster: 'ru',
 })
-// const channel = pusher.subscribe(
-//   'private-v1.licenses.27720.messengers.grWhatsApp'
-//   )
-//   channel.bind('message', (data) => {
-//     console.log(data)
-//   })
+
+const channel = pusher.subscribe(
+  `private-v1.licenses.${license}.messengers.grWhatsApp`
+)
+
+channel.bind('message', (data) => {
+  console.log(data)
+})
 
 export default pusher

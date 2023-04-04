@@ -17,7 +17,7 @@ const messagesSlice = createSlice({
       })
       .addCase(getMessagesHistory.fulfilled, (state, action) => {
         state.status = 'fulfilled'
-        state.allMesseges = action.payload.data
+        state.allMesseges = action.payload.data.items
         state.error = null
       })
       .addCase(getMessagesHistory.rejected, (state, action) => {

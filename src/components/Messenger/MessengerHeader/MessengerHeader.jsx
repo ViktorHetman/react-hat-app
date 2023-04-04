@@ -9,7 +9,7 @@ function MessengerHeader() {
   return (
     <div className={styles.header}>
       <span className={styles.header_content}>{name}</span>
-      <span className={styles.header_phone}>{`+${phone}`}</span>
+      <span className={styles.header_phone}>{phone ? `+${phone}` : ''}</span>
     </div>
   )
 }
