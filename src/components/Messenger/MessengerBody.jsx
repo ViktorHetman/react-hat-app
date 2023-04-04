@@ -8,6 +8,8 @@ import { getLicenses } from '../../services/getUserLicenses'
 import MessengerContacts from './MessengerContacts/MessengerContacts'
 import MessengerHeader from './MessengerHeader/MessengerHeader'
 
+import styles from './MessengerBody.module.css'
+
 function MessengerBody() {
   const dispatch = useDispatch()
   const token = localStorage.getItem('token')
@@ -22,13 +24,13 @@ function MessengerBody() {
     <>
       {!!token && (
         <Grid container spacing={1}>
-          <Grid style={{ marginTop: 10, marginLeft: 5 }} item xs={3}>
+          <Grid item xs={3}>
             <MessengerContacts />
           </Grid>
-          <Grid item xs={8}>
+          <Grid item xs={9}>
             <MessengerHeader />
             <Grid>
-              <div>MESSENGER CONTENT</div>
+              <div className={styles.container}>MESSENGER CONTENT</div>
             </Grid>
           </Grid>
         </Grid>

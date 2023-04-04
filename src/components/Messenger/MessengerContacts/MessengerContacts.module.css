@@ -9,21 +9,52 @@
 .searchbar {
   border-radius: 50px;
   width: 23vw;
+  position: inherit;
+  height: 50px;
+  margin-top: 10px;
+  margin-left: 5px;
+}
+
+.searchbar::placeholder {
+  padding-left: 5px;
 }
 
 .contacts {
   font-size: 16px;
   font-weight: 400;
-  list-style: none;
-  display: flex;
-  justify-content: flex-start;
-  margin-left: 5px;
+  color: white;
+}
+
+hr {
+  width: 100%;
 }
 
 .container {
-  border-right: 5px solid #cdcdcd;
+  border-right: 3px solid #cdcdcd;
+  height: 15vh;
 }
 
-.cuP {
-  cursor: pointer;
+.container_list {
+  height: 100vh;
+  overflow: scroll;
+}
+
+.container_list::-webkit-scrollbar {
+  width: 10px;
+}
+
+.container_list::-webkit-scrollbar-track {
+  background-color: #cdcdcd;
+}
+
+.container_list::-webkit-scrollbar-thumb {
+  background-color: #573424;
+  border-radius: 20px;
+}
+
+.search_icon {
+  position: absolute;
+  color: black;
+  top: 22px;
+  left: 5px;
 }

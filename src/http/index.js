@@ -44,7 +44,6 @@ instance.interceptors.response.use(
       return instance.request(originalRequest)
     } catch (e) {
       console.log(e)
-      instance.request(originalRequest)
     }
   }
 )

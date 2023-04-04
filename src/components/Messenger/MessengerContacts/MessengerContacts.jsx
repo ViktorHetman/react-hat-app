@@ -2,14 +2,18 @@ import { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { Button } from '@mui/material'
+import SearchIcon from '@mui/icons-material/Search'
 
 import { getContacts } from '../../../services/getUserLicenses'
 import { getMessagesHistory } from '../../../services/getMessagesHistory'
+
+import MessengerContactCard from '../MessengerContactCard/MessengerContactCard'
 
 import styles from './MessengerContacts.module.css'
 
 function MessengerContacts() {
   const [active, setActive] = useState('false')
+  const [filter, setFilter] = useState('')
   const dispatch = useDispatch()
   const navigate = useNavigate()
   useEffect(() => {
@@ -37,10 +41,15 @@ function MessengerContacts() {
   return (
     <div className={styles.container}>
       <div>
+        <div className={styles.search_icon}>
+          <SearchIcon />
+        </div>
         <input
           className={styles.searchbar}
           type="text"
-          placeholder="searchbar"
+          placeholder="Search contact"
+          onChange={(e) => setFilter(e.target.value)}
+          value={filter}
         />
       </div>
       <div className={styles.contact_field}>
@@ -56,19 +65,20 @@ function MessengerContacts() {
       </div>
       <div className={styles.container_list}>
         {active &&
-          allContacts?.items?.map((item) => (
-            <div
-              className={styles.cuP}
-              key={item.id}
-              onClick={() => dispatch(getMessagesHistory(item.id))}
-            >
-              <label className={styles.contacts}>{item.name}</label>
-              <hr />
-            </div>
-          ))}
+          allContacts?.items
+            ?.filter((item) => item.name.toLowerCase().includes(filter))
+            .map((item) => (
+              <div
+                className={styles.contacts}
+                key={item.id}
+                onClick={() => dispatch(getMessagesHistory(item.id))}
+              >
+                <MessengerContactCard name={item.name} phone={item.phone} />
+                <hr />
+              </div>
+            ))}
       </div>
     </div>
   )
 }
-
 export default MessengerContacts
