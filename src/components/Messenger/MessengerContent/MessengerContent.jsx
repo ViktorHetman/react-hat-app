@@ -16,7 +16,13 @@ function MessengerContent() {
             }`}
             key={item.id}
           >
-            <span>{item.message.text}</span>
+            <span
+              className={`${
+                item.fromMe === true ? styles.text_me : styles.text_contact
+              }`}
+            >
+              {item.message.text}
+            </span>
           </div>
         ))}
       </div>

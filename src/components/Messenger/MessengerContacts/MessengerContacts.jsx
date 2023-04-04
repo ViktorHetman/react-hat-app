@@ -15,6 +15,7 @@ import { setName } from '../../../store/slices/contactsSlice'
 function MessengerContacts() {
   const [active, setActive] = useState('false')
   const [filter, setFilter] = useState('')
+
   const dispatch = useDispatch()
   const navigate = useNavigate()
   useEffect(() => {

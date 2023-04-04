@@ -3,3 +3,13 @@
   height: 14vh;
   border-top: 1px solid black;
 }
+
+.text_area {
+  width: 95%;
+}
+
+.icon {
+  margin-top: 35px;
+  margin-left: 10px;
+  cursor: pointer;
+}
