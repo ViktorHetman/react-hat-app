@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 import { Grid } from '@mui/material'
 
@@ -12,7 +12,12 @@ import MessengerInput from './MessengerInput/MessengerInput'
 
 function MessengerBody() {
   const dispatch = useDispatch()
-  const token = localStorage.getItem('token')
+
+  let token = useSelector((state) => state.login.token)
+
+  if (!token) {
+    token = localStorage.getItem('token')
+  }
 
   useEffect(() => {
     dispatch(getLicenses(token))
