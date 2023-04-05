@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { TextField } from '@mui/material'
 import SendIcon from '@mui/icons-material/Send'
 import { useDispatch, useSelector } from 'react-redux'
@@ -5,7 +6,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { postMessage } from '../../../services/postMessage'
 
 import styles from './MessengerInput.module.css'
-import { useState } from 'react'
 
 function MessengerInput() {
   const dispatch = useDispatch()

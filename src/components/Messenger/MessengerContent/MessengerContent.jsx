@@ -1,10 +1,10 @@
+import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import pusher from '../../../pusher/pusher'
 import { setMessage } from '../../../store/slices/messegesSlice'
 
 import styles from './MessengerContent.module.css'
-import { useEffect } from 'react'
 
 function MessengerContent() {
   const dispatch = useDispatch()
