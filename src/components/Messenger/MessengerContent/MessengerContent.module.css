@@ -21,7 +21,7 @@
   display: flex;
   justify-content: flex-end;
   margin-right: 5px;
-  max-width: 400px;
+  max-width: 250px;
   margin-left: 60vw;
   background-color: black;
   color: white;
@@ -42,11 +42,28 @@
   display: flex;
   justify-content: flex-start;
   margin-left: 5px;
-  max-width: 400px;
+  max-width: 250px;
   background-color: black;
   color: white;
   border-radius: 10px;
   min-height: 45px;
   max-height: 75px;
+  margin-top: 5px;
+}
+
+.chat_pic {
+  width: 250px;
+  height: 250px;
+  margin-top: 5px;
+}
+
+.chat_pic_from_contact {
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 5px;
+  max-width: 250px;
+  max-height: 250px;
+  background-color: black;
+  border-radius: 10px;
   margin-top: 5px;
 }

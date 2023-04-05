@@ -4,7 +4,7 @@ import instance from '../http'
 import { WEB_URL } from '../constants/WEB_URL'
 
 export const postMessage = createAsyncThunk(
-  'message/SendMessage',
+  'message/PostMessage',
   async (chatId) => {
     try {
       const licenseId = localStorage.getItem('licenseId')
@@ -18,8 +18,6 @@ export const postMessage = createAsyncThunk(
           text: text,
         }
       )
-      console.log(text)
-      console.log(chatId)
       return res
     } catch (e) {
       console.log(e)

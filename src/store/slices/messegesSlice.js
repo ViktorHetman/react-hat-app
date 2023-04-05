@@ -9,7 +9,11 @@ const messagesSlice = createSlice({
     status: null,
     error: null,
   },
-  reducers: {},
+  reducers: {
+    setMessage(state, action) {
+      state.allMesseges.unshift(action.payload.allMesseges[0])
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getMessagesHistory.pending, (state) => {
@@ -26,5 +30,6 @@ const messagesSlice = createSlice({
       })
   },
 })
+export const { setMessage } = messagesSlice.actions
 
 export default messagesSlice.reducer

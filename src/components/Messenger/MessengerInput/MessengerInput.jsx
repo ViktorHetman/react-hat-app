@@ -5,18 +5,17 @@ import { useDispatch, useSelector } from 'react-redux'
 import { postMessage } from '../../../services/postMessage'
 
 import styles from './MessengerInput.module.css'
+import { useState } from 'react'
 
 function MessengerInput() {
   const dispatch = useDispatch()
   const chatId = useSelector((state) => state.sendMessage.chatId)
-
-  const textHandle = (e) => {
-    localStorage.setItem('text', e)
-    e = ''
-  }
+  const [message, setMessage] = useState('')
 
   const onSubmitHandler = () => {
+    localStorage.setItem('text', message)
     dispatch(postMessage(chatId))
+    setMessage('')
   }
 
   return (
@@ -25,9 +24,10 @@ function MessengerInput() {
         className={styles.text_area}
         variant="outlined"
         placeholder="Message for your friend"
+        value={message}
         multiline
         rows={3}
-        onChange={(e) => textHandle(e.target.value)}
+        onChange={(e) => setMessage(e.target.value)}
       />
       <div className={styles.send_container}>
         <button type="submit" className={styles.btn} onClick={onSubmitHandler}>

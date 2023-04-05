@@ -1,12 +1,12 @@
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 import pusher from '../../../pusher/pusher'
+import { setMessage } from '../../../store/slices/messegesSlice'
 
 import styles from './MessengerContent.module.css'
 
 function MessengerContent() {
-  const messages = useSelector((state) => state.messages.allMesseges)
-  const sortedMessages = messages.slice().reverse()
+  const dispatch = useDispatch()
 
   const license = localStorage.getItem('licenseId')
   const channel = pusher.subscribe(
@@ -14,26 +14,45 @@ function MessengerContent() {
   )
 
   channel.bind('message', (data) => {
-    console.log(data)
+    dispatch(
+      setMessage({
+        allMesseges: data.payload.data,
+      })
+    )
   })
+
+  const messages = useSelector((state) => state.messages.allMesseges)
+  const sortedMessages = messages.slice().reverse()
 
   return (
     <div className={styles.container}>
       <div>
         {sortedMessages?.map((item) => (
-          <div
-            className={`${
-              item.fromMe === true ? styles.from_me : styles.from_contact
-            }`}
-            key={item.id}
-          >
-            <span
-              className={`${
-                item.fromMe === true ? styles.text_me : styles.text_contact
-              }`}
-            >
-              {item.message.text}
-            </span>
+          <div key={item.id}>
+            {item.message.text ? (
+              <div
+                key={item.id}
+                className={`${
+                  item.fromMe === true ? styles.from_me : styles.from_contact
+                }`}
+              >
+                <span
+                  className={`${
+                    item.fromMe === true ? styles.text_me : styles.text_contact
+                  }`}
+                >
+                  {item.message.text}
+                </span>
+              </div>
+            ) : (
+              <div className={styles.chat_pic_from_contact}>
+                <img
+                  className={styles.chat_pic}
+                  src={item.message.file.link}
+                  alt="pic"
+                />
+              </div>
+            )}
           </div>
         ))}
       </div>
