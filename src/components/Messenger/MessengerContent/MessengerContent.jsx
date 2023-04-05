@@ -4,22 +4,24 @@ import pusher from '../../../pusher/pusher'
 import { setMessage } from '../../../store/slices/messegesSlice'
 
 import styles from './MessengerContent.module.css'
+import { useEffect } from 'react'
 
 function MessengerContent() {
   const dispatch = useDispatch()
 
   const license = localStorage.getItem('licenseId')
-  const channel = pusher.subscribe(
-    `private-v1.licenses.${license}.messengers.grWhatsApp`
-  )
-
-  channel.bind('message', (data) => {
-    dispatch(
-      setMessage({
-        allMesseges: data.payload.data,
-      })
+  useEffect(() => {
+    const channel = pusher.subscribe(
+      `private-v1.licenses.${license}.messengers.grWhatsApp`
     )
-  })
+    channel.bind('message', (data) => {
+      dispatch(
+        setMessage({
+          allMesseges: data.payload.data,
+        })
+      )
+    })
+  }, [dispatch, license])
 
   const messages = useSelector((state) => state.messages.allMesseges)
   const sortedMessages = messages.slice().reverse()

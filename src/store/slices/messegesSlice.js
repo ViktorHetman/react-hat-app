@@ -12,6 +12,7 @@ const messagesSlice = createSlice({
   reducers: {
     setMessage(state, action) {
       state.allMesseges.unshift(action.payload.allMesseges[0])
+      console.log(state.allMesseges)
     },
   },
   extraReducers: (builder) => {

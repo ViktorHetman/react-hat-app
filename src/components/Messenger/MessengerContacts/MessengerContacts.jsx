@@ -33,10 +33,6 @@ function MessengerContacts() {
     navigate('/login')
   }
 
-  // const allContactsLocal = localStorage.getItem('persist:root')
-  // const allContactsJSON = JSON.parse(allContactsLocal)
-  // const allContacts = JSON.parse(allContactsJSON?.userContacts)
-
   let allContacts = useSelector((state) => state.persisted.userContacts)
   if (!allContacts) {
     const allContactsLocal = localStorage.getItem('persist:root')
