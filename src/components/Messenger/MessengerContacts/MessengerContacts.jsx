@@ -8,6 +8,7 @@ import MessengerContactCard from '../MessengerContactCard/MessengerContactCard'
 
 import { getMessagesHistory } from '../../../services/getMessagesHistory'
 import { getContacts } from '../../../services/getUserLicenses'
+import { getRecentContacts } from '../../../services/getRecentContacts'
 
 import { setName } from '../../../store/slices/contactsSlice'
 import { setInfo } from '../../../store/slices/sendMessageSlice'
@@ -46,6 +47,7 @@ function MessengerContacts() {
 
   const setRecentContacts = () => {
     setActive(false)
+    dispatch(getRecentContacts())
   }
 
   const userInfoHandler = (id, name, phone) => {
