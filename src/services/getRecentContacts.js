@@ -15,7 +15,6 @@ export const getRecentContacts = createAsyncThunk(
         { token }
       )
       const recentContacts = res.data
-      console.log(recentContacts)
       return recentContacts
     } catch (e) {
       console.log(e)

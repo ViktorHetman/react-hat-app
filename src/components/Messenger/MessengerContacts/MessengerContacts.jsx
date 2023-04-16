@@ -12,6 +12,7 @@ import { getRecentContacts } from '../../../services/getRecentContacts'
 
 import { setName } from '../../../store/slices/contactsSlice'
 import { setInfo } from '../../../store/slices/sendMessageSlice'
+import { setOpen } from '../../../store/slices/recentContacsSlice'
 
 import styles from './MessengerContacts.module.scss'
 
@@ -74,6 +75,16 @@ function MessengerContacts() {
     )
   }
 
+  const toggleOpenChatHandler = (id) => {
+    dispatch(
+      setOpen({
+        isOpen: true,
+        id: id,
+        unreadMessages: 0,
+      })
+    )
+  }
+
   return (
     <div className={styles.container}>
       <div>
@@ -126,11 +137,14 @@ function MessengerContacts() {
                   }
                 >
                   <MessengerContactCard
+                    id={item.id}
                     name={item.name}
                     image={item.image}
                     tags={item.tags}
                     lastMessage={item.timeLastInMessage}
                     unread={item.unreadMessages}
+                    toggleOpenChatHandler={toggleOpenChatHandler}
+                    isOpen={item.isOpen}
                   />
                 </div>
               ))}

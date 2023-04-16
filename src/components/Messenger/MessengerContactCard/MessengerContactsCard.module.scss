@@ -1,15 +1,17 @@
-.card {
+.cardContainer {
   margin-left: 10px;
   margin-top: 10px;
   display: flex;
-  width: 95%;
+  width: 96%;
   color: black;
   position: relative;
-  span {
+  cursor: pointer;
+  .card {
     display: flex;
-    margin-left: 30px;
-    font-weight: 500;
-    font-size: 14px;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-left: 10px;
+    width: 100%;
   }
   img {
     justify-content: flex-start;
@@ -17,6 +19,9 @@
     height: 61px;
     display: flex;
     border-radius: 10px;
+    align-items: center;
+    margin-left: 5px;
+    margin-top: 2px;
   }
   .nameAndTime {
     display: flex;
@@ -57,10 +62,15 @@
       }
       .read {
         display: none;
+        font-weight: 300;
+        background-color: #e8ecf3;
       }
     }
     .readBlock {
       background-color: white;
     }
   }
+}
+.openedChat {
+  background-color: #e8ecf3;
 }
