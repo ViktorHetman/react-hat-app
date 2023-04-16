@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import { postMessage } from '../../../services/postMessage'
 
-import styles from './MessengerInput.module.css'
+import styles from './MessengerInput.module.scss'
 
 function MessengerInput() {
   const dispatch = useDispatch()

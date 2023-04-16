@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux'
 
-import styles from './MessengerHeader.module.css'
+import styles from './MessengerHeader.module.scss'
 
 function MessengerHeader() {
   const name = useSelector((state) => state.persisted.userName)

@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import pusher from '../../../pusher/pusher'
 import { setMessage } from '../../../store/slices/messegesSlice'
 
-import styles from './MessengerContent.module.css'
+import styles from './MessengerContent.module.scss'
 
 function MessengerContent() {
   const dispatch = useDispatch()

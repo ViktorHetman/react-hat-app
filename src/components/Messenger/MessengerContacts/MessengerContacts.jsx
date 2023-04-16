@@ -13,7 +13,7 @@ import { getRecentContacts } from '../../../services/getRecentContacts'
 import { setName } from '../../../store/slices/contactsSlice'
 import { setInfo } from '../../../store/slices/sendMessageSlice'
 
-import styles from './MessengerContacts.module.css'
+import styles from './MessengerContacts.module.scss'
 
 function MessengerContacts() {
   const [active, setActive] = useState('false')
@@ -39,6 +39,15 @@ function MessengerContacts() {
     const allContactsLocal = localStorage.getItem('persist:root')
     const allContactsJSON = JSON.parse(allContactsLocal)
     allContacts = JSON.parse(allContactsJSON?.userContacts)
+  }
+
+  let recentContacts = useSelector(
+    (state) => state.persistedRecent.recentContacts
+  )
+  if (!recentContacts) {
+    const recentContactsLocal = localStorage.getItem('persist:allContacts')
+    const allContactsJSON = JSON.parse(recentContactsLocal)
+    recentContacts = JSON.parse(allContactsJSON?.recentContacts)
   }
 
   const setAllContacts = () => {
@@ -92,19 +101,39 @@ function MessengerContacts() {
       </div>
       <hr />
       <div className={styles.container_list}>
-        {active &&
-          allContacts?.items
-            ?.filter((item) => item.name.toLowerCase().includes(filter))
-            .map((item) => (
-              <div
-                className={styles.contacts}
-                key={item.id}
-                onClick={() => userInfoHandler(item.id, item.name, item.phone)}
-              >
-                <MessengerContactCard name={item.name} phone={item.phone} />
-                <hr />
-              </div>
-            ))}
+        {active
+          ? allContacts?.items
+              ?.filter((item) => item.name.toLowerCase().includes(filter))
+              .map((item) => (
+                <div
+                  className={styles.contacts}
+                  key={item.id}
+                  onClick={() =>
+                    userInfoHandler(item.id, item.name, item.phone)
+                  }
+                >
+                  <MessengerContactCard name={item.name} phone={item.phone} />
+                  <hr />
+                </div>
+              ))
+          : recentContacts?.items
+              ?.filter((item) => item.name.toLowerCase().includes(filter))
+              .map((item) => (
+                <div
+                  key={item.id}
+                  onClick={() =>
+                    userInfoHandler(item.id, item.name, item.image)
+                  }
+                >
+                  <MessengerContactCard
+                    name={item.name}
+                    image={item.image}
+                    tags={item.tags}
+                    lastMessage={item.timeLastInMessage}
+                    unread={item.unreadMessages}
+                  />
+                </div>
+              ))}
       </div>
     </div>
   )

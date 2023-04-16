@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setUser } from '../../store/slices/loginSlice'
 import { getTokens } from '../../services/getTokens'
 
-import './LoginForm.css'
+import './LoginForm.scss'
 
 function LoginForm() {
   const navigate = useNavigate()

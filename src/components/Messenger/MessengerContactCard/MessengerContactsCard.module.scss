@@ -1,0 +1,66 @@
+.card {
+  margin-left: 10px;
+  margin-top: 10px;
+  display: flex;
+  width: 95%;
+  color: black;
+  position: relative;
+  span {
+    display: flex;
+    margin-left: 30px;
+    font-weight: 500;
+    font-size: 14px;
+  }
+  img {
+    justify-content: flex-start;
+    width: 61px;
+    height: 61px;
+    display: flex;
+    border-radius: 10px;
+  }
+  .nameAndTime {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    .name {
+      justify-content: start;
+    }
+    .time {
+      justify-content: flex-end;
+      font-weight: 300;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+  }
+  .tagsAndUnread {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    .tags {
+      font-weight: 400;
+    }
+    .unreadBlock {
+      background-color: #e8ecf3;
+      width: 38px;
+      height: 20px;
+      border-radius: 25px;
+      position: absolute;
+      top: 5;
+      right: 0;
+      .unread {
+        font-weight: 400;
+        position: absolute;
+        margin-right: 15px;
+        right: 0;
+        top: 5;
+      }
+      .read {
+        display: none;
+      }
+    }
+    .readBlock {
+      background-color: white;
+    }
+  }
+}
