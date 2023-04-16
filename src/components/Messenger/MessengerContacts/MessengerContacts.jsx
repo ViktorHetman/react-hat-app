@@ -9,6 +9,7 @@ import MessengerContactCard from '../MessengerContactCard/MessengerContactCard'
 import { getMessagesHistory } from '../../../services/getMessagesHistory'
 import { getContacts } from '../../../services/getUserLicenses'
 import { getRecentContacts } from '../../../services/getRecentContacts'
+import { patchMessage } from '../../../services/patchMessage'
 
 import { setName } from '../../../store/slices/contactsSlice'
 import { setInfo } from '../../../store/slices/sendMessageSlice'
@@ -83,6 +84,7 @@ function MessengerContacts() {
         unreadMessages: 0,
       })
     )
+    patchMessage(id)
   }
 
   return (
