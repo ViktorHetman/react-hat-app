@@ -1,4 +1,5 @@
 import { useSelector } from 'react-redux'
+import { Switch, FormGroup, FormControlLabel } from '@mui/material'
 
 import styles from './MessengerHeader.module.scss'
 import image from '../../../img/Arrow.png'
@@ -24,6 +25,13 @@ function MessengerHeader() {
           </span>
           <img src={image} alt="arrow" className={styles.arrow} />
         </div>
+      </div>
+      <div>
+        <FormGroup className={styles.switch}>
+          <FormControlLabel
+            control={<Switch defaultChecked color="success" />}
+          />
+        </FormGroup>
       </div>
     </div>
   )
