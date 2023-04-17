@@ -1,3 +1,6 @@
+import { Rating } from '@mui/material'
+import { useState } from 'react'
+
 import { convertTime } from '../../../utils/lastMessage'
 
 import styles from './MessengerContactsCard.module.scss'
@@ -12,8 +15,9 @@ function MessengerContactCard({
   toggleOpenChatHandler,
   isOpen,
   lastMessage,
-  isClosed,
+  isClose,
 }) {
+  const [rating, setRaiting] = useState(0)
   const lastMessageTime = convertTime(lastMessageUNIX)
   return (
     <div
@@ -50,7 +54,18 @@ function MessengerContactCard({
           </div>
         </div>
         <div>
-          <span>{lastMessage?.message.text}</span>
+          <span>{`${
+            isClose
+              ? `Chat is closed | ${(
+                  <Rating
+                    size="small"
+                    name="simple-controlled"
+                    value={rating}
+                    onChange={(e, newValue) => setRaiting(newValue)}
+                  />
+                )}`
+              : lastMessage?.message.text
+          }`}</span>
         </div>
       </div>
     </div>
