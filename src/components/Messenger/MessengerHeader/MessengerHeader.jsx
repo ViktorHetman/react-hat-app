@@ -1,10 +1,16 @@
-import { useSelector } from 'react-redux'
 import { Switch, FormGroup, FormControlLabel } from '@mui/material'
+import { useDispatch, useSelector } from 'react-redux'
+import { useState } from 'react'
+
+import { patchCloseChat } from '../../../services/patchCloseChat'
+import { setClosed } from '../../../store/slices/recentContacsSlice'
 
 import styles from './MessengerHeader.module.scss'
 import image from '../../../img/Arrow.png'
 
 function MessengerHeader() {
+  const [value, setValue] = useState(true)
+  const dispatch = useDispatch()
   const name = useSelector((state) => state.persisted.userName)
   const licenseId = localStorage.getItem('licenseId')
   const recentContacts = useSelector(
@@ -12,12 +18,34 @@ function MessengerHeader() {
   )
   const id = useSelector((state) => state.sendMessage.chatId)
 
+  if (!value) {
+    patchCloseChat(id)
+    dispatch(
+      setClosed({
+        isClose: true,
+        id: id,
+      })
+    )
+  }
+
   return (
     <div className={styles.header}>
       <div className={styles.header_profile}>
         <div>
           {recentContacts?.items.map((item) =>
-            item.id === id ? <img src={item.image} alt="user avatar" /> : ''
+            item.id === id ? (
+              <img
+                key={item.id}
+                src={`${
+                  item.image
+                    ? item.image
+                    : 'https://e7.pngegg.com/pngimages/178/595/png-clipart-user-profile-computer-icons-login-user-avatars-monochrome-black.png'
+                }`}
+                alt="user avatar"
+              />
+            ) : (
+              ''
+            )
           )}
           <span className={styles.header_content}>{name}</span>
           <span className={styles.header_phone}>
@@ -29,9 +57,23 @@ function MessengerHeader() {
       <div>
         <FormGroup className={styles.switch}>
           <FormControlLabel
-            control={<Switch defaultChecked color="success" />}
+            className={styles.switchLabelOpen}
+            control={
+              <Switch
+                checked={value}
+                color="success"
+                onChange={(e) => setValue(e.target.checked)}
+              />
+            }
+            label="Open"
           />
         </FormGroup>
+      </div>
+      <div className={styles.profileAvatar}>
+        <img
+          src="https://e7.pngegg.com/pngimages/178/595/png-clipart-user-profile-computer-icons-login-user-avatars-monochrome-black.png"
+          alt="avatar"
+        />
       </div>
     </div>
   )

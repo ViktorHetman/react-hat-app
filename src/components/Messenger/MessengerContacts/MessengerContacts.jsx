@@ -150,6 +150,7 @@ function MessengerContacts() {
                     toggleOpenChatHandler={toggleOpenChatHandler}
                     lastMessage={lastMessage}
                     isOpen={item.isOpen}
+                    isClosed={item.isClosed}
                   />
                 </div>
               ))}

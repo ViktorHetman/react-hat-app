@@ -17,6 +17,13 @@ const recentSlice = createSlice({
           : (item.isOpen = false)
       )
     },
+    setClosed(state, action) {
+      state.recentContacts.items.map((item) =>
+        item.id === action.payload.id
+          ? (item.isClose = true)
+          : (item.isClose = false)
+      )
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -26,6 +33,7 @@ const recentSlice = createSlice({
       .addCase(getRecentContacts.fulfilled, (state, action) => {
         state.recentContacts = action.payload.data
         state.recentContacts.items.map((item) => (item.isOpen = false))
+        state.recentContacts.items.map((item) => (item.isClose = false))
         state.status = 'fulfilled'
         state.error = null
       })
@@ -35,6 +43,6 @@ const recentSlice = createSlice({
       })
   },
 })
-export const { setOpen } = recentSlice.actions
+export const { setOpen, setClosed } = recentSlice.actions
 
 export default recentSlice.reducer

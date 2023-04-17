@@ -12,15 +12,22 @@ function MessengerContactCard({
   toggleOpenChatHandler,
   isOpen,
   lastMessage,
+  isClosed,
 }) {
   const lastMessageTime = convertTime(lastMessageUNIX)
-
   return (
     <div
       className={`${styles.cardContainer} ${isOpen ? styles.openedChat : ''}`}
       onClick={() => toggleOpenChatHandler(id)}
     >
-      <img src={image} alt="user avatar" />
+      <img
+        src={`${
+          image
+            ? image
+            : 'https://e7.pngegg.com/pngimages/178/595/png-clipart-user-profile-computer-icons-login-user-avatars-monochrome-black.png'
+        }`}
+        alt="user avatar"
+      />
       <div className={styles.card}>
         <div className={styles.nameAndTime}>
           <span className={styles.name}>{name}</span>
