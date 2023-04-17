@@ -8,11 +8,12 @@ function MessengerContactCard({
   image,
   tags,
   unread,
-  lastMessage,
+  lastMessageUNIX,
   toggleOpenChatHandler,
   isOpen,
+  lastMessage,
 }) {
-  const lastMessageTime = convertTime(lastMessage)
+  const lastMessageTime = convertTime(lastMessageUNIX)
 
   return (
     <div
@@ -30,7 +31,11 @@ function MessengerContactCard({
             !isOpen && unread ? styles.tagsAndUnread : styles.read
           }`}
         >
-          <span className={styles.tags}>123</span>
+          <div className={styles.tags}>
+            {tags?.map((tag) => (
+              <span key={tag.id}>{tag.name}</span>
+            ))}
+          </div>
           <div className={styles.unreadBlock}>
             <span className={styles.unread}>
               {unread && !isOpen ? unread : ''}
@@ -38,7 +43,7 @@ function MessengerContactCard({
           </div>
         </div>
         <div>
-          <span>222</span>
+          <span>{lastMessage?.message.text}</span>
         </div>
       </div>
     </div>

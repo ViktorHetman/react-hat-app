@@ -87,6 +87,8 @@ function MessengerContacts() {
     patchMessage(id)
   }
 
+  const lastMessage = useSelector((state) => state.messages.allMesseges[0])
+
   return (
     <div className={styles.container}>
       <div>
@@ -143,9 +145,10 @@ function MessengerContacts() {
                     name={item.name}
                     image={item.image}
                     tags={item.tags}
-                    lastMessage={item.timeLastInMessage}
+                    lastMessageUNIX={item.timeLastInMessage}
                     unread={item.unreadMessages}
                     toggleOpenChatHandler={toggleOpenChatHandler}
+                    lastMessage={lastMessage}
                     isOpen={item.isOpen}
                   />
                 </div>

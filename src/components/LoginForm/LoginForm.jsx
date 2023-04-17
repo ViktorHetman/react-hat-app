@@ -8,7 +8,6 @@ import { setUser } from '../../store/slices/loginSlice'
 import { getTokens } from '../../services/getTokens'
 
 import './LoginForm.scss'
-
 function LoginForm() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
