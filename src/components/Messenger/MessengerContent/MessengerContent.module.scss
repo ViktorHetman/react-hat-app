@@ -42,7 +42,7 @@
   label {
     color: black;
     position: absolute;
-    top: 10px;
+    bottom: 0;
     right: 40px;
     font-size: 14px;
   }
@@ -70,8 +70,8 @@
   label {
     color: black;
     position: absolute;
-    top: 10px;
-    right: 40px;
+    bottom: 0;
+    right: 50px;
     font-size: 14px;
   }
 }
@@ -88,7 +88,22 @@
   margin-left: 5px;
   max-width: 250px;
   max-height: 250px;
-  background-color: black;
   border-radius: 10px;
   margin-top: 5px;
+}
+
+@media screen and (max-width: 800) {
+  .from_me {
+    .text_me {
+      max-width: 40%;
+    }
+  }
+  .from_contact {
+    max-width: 150px;
+    min-height: 30px;
+    height: auto;
+    .text_contact {
+      max-width: 40%;
+    }
+  }
 }

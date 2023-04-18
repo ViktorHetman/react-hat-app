@@ -44,6 +44,12 @@
     width: 100%;
     .tags {
       font-weight: 400;
+      width: 60px;
+      height: 19px;
+      margin-left: 5px;
+      span {
+        color: white;
+      }
     }
     .unreadBlock {
       background-color: #e8ecf3;
@@ -76,4 +82,41 @@
 }
 .unreadMessage {
   font-weight: 500;
+}
+
+@media screen and (max-width: 800px) {
+  .card {
+    width: 50%;
+  }
+  img {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: flex-start;
+  }
+  .nameAndTime {
+    font-size: 12px;
+  }
+  .tags {
+    width: 30px;
+    font-size: 9px;
+  }
+}
+@media screen and (max-width: 400px) {
+  .card {
+    width: 30%;
+    img {
+      width: 16px;
+      height: 16px;
+      display: flex;
+      justify-content: flex-start;
+    }
+  }
+  .nameAndTime {
+    font-size: 8px;
+  }
+  .tags {
+    width: 15px;
+    font-size: 6px;
+  }
 }

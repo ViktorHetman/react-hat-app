@@ -41,7 +41,7 @@ function MessengerContent() {
             >
               <span
                 className={`${
-                  item.fromMe === true ? styles.text_me : styles.text_contact
+                  item.fromMe === true ? styles.text_me : styles.text_contact // -- REFACTOR EVERYTHING!!
                 }`}
               >
                 {item.message.text}
@@ -57,6 +57,7 @@ function MessengerContent() {
                 src={item.message.file.link}
                 alt="pic"
               />
+              {/* <label>{convertTime(item.time)}</label> */}
             </div>
           )}
         </div>

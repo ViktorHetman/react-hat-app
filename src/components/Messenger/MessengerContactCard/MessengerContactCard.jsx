@@ -44,7 +44,9 @@ function MessengerContactCard({
         >
           <div className={styles.tags}>
             {tags?.map((tag) => (
-              <span key={tag.id}>{tag.name}</span>
+              <div key={tag.id} style={{ backgroundColor: tag.color }}>
+                <span>{tag.name}</span>
+              </div>
             ))}
           </div>
           <div className={styles.unreadBlock}>
