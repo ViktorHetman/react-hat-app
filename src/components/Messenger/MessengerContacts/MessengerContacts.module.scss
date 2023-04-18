@@ -3,7 +3,10 @@
   flex-direction: row;
   justify-content: space-around;
   width: 24vw;
-  margin: 0 auto;
+  margin-top: 10px;
+  Button {
+    background: #e8ecf3;
+  }
 }
 
 .searchbar {
@@ -51,6 +54,6 @@ hr {
 .search_icon {
   position: absolute;
   color: black;
-  top: 22px;
-  left: 5px;
+  top: 25px;
+  left: 330px;
 }

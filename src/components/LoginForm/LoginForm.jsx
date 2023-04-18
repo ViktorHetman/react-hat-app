@@ -56,7 +56,7 @@ function LoginForm() {
   }
 
   return (
-    <div>
+    <div className={styles.container}>
       <h1>React Chat App</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
         <label>

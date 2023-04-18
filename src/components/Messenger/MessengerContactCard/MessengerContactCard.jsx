@@ -54,17 +54,17 @@ function MessengerContactCard({
           </div>
         </div>
         <div>
-          <span>{`${
+          <span className={`${unread ? styles.unreadMessage : ''}`}>{`${
             isClose
               ? `Chat is closed | ${(
                   <Rating
                     size="small"
                     name="simple-controlled"
                     value={rating}
-                    onChange={(e, newValue) => setRaiting(newValue)}
+                    onChange={(newValue) => setRaiting(newValue)}
                   />
                 )}`
-              : lastMessage?.message.text
+              : 'There should be last message'
           }`}</span>
         </div>
       </div>
