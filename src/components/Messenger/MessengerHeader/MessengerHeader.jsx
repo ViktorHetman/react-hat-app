@@ -1,9 +1,12 @@
-import { Switch, FormGroup, FormControlLabel } from '@mui/material'
+import { FormGroup, FormControlLabel } from '@mui/material'
 import { useDispatch, useSelector } from 'react-redux'
 import { useState } from 'react'
 
 import { patchCloseChat } from '../../../services/patchCloseChat'
 import { setClosed } from '../../../store/slices/recentContacsSlice'
+
+import IOSSwitch from '../../MUI Components/Switch'
+import LongMenu from '../../MUI Components/BurgerBtn'
 
 import styles from './MessengerHeader.module.scss'
 import image from '../../../img/Arrow.png'
@@ -57,15 +60,17 @@ function MessengerHeader() {
       <div>
         <FormGroup className={styles.switch}>
           <FormControlLabel
-            className={styles.switchLabelOpen}
+            className={`${
+              value ? styles.switchLabelOpen : styles.switchLabelClose
+            }`}
             control={
-              <Switch
+              <IOSSwitch
                 checked={value}
                 color="success"
                 onChange={(e) => setValue(e.target.checked)}
               />
             }
-            label="Open"
+            label={`${value ? 'Open' : 'Closed'}`}
           />
         </FormGroup>
       </div>
@@ -74,6 +79,9 @@ function MessengerHeader() {
           src="https://e7.pngegg.com/pngimages/178/595/png-clipart-user-profile-computer-icons-login-user-avatars-monochrome-black.png"
           alt="avatar"
         />
+      </div>
+      <div className={styles.burgerBtn}>
+        <LongMenu />
       </div>
     </div>
   )

@@ -54,13 +54,13 @@
   }
   .switch {
     position: absolute;
-    bottom: 10px;
+    bottom: 17px;
     right: 160px;
     .switchLabelOpen {
       color: green;
     }
     .switchLabelClose {
-      color: black;
+      color: red;
     }
   }
   .profileAvatar {
@@ -77,6 +77,24 @@
       position: absolute;
       bottom: 0;
       right: 0;
+    }
+  }
+  .burgerBtn {
+    position: absolute;
+    border-radius: 12px;
+    justify-content: center;
+    text-transform: uppercase;
+    display: flex;
+    width: 62px;
+    align-items: center;
+    height: 62px;
+    background-color: #e8ecf3;
+    top: 0px;
+    right: 40px;
+    &:hover {
+      transition: 0.3s all;
+      transform: translateY(-3px);
+      opacity: 0.8;
     }
   }
 }

@@ -84,24 +84,19 @@ input[type='button']:hover {
   transition: 0.3s all;
 }
 
-.App {
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-button[type='button'] {
-  display: block;
-  appearance: none;
-  background: #333;
-  color: white;
-  border: none;
-  text-transform: uppercase;
-  padding: 10px 20px;
-  border-radius: 4px;
-  &:hover {
-    color: black;
-  }
-}
+// button[type='button'] {
+//   display: block;
+//   appearance: none;
+//   background: #e8ecf3;
+//   color: black;
+//   border: none;
+//   text-transform: uppercase;
+//   padding: 10px 20px;
+//   border-radius: 4px;
+//   &:hover {
+//     color: black;
+//   }
+// }
 
 hr {
   margin-top: 30px;
