@@ -1,12 +1,53 @@
 .text_field {
   background-color: white;
-  height: 14vh;
-  border-top: 1px solid black;
+  display: flex;
+  align-items: center;
+  height: 7vh;
+  border-top: 1px solid rgba($color: #000000, $alpha: 0.11);
   position: relative;
+  .plusBtn {
+    position: absolute;
+    top: 42px;
+    left: 110px;
+    cursor: pointer;
+  }
+  .microphone {
+    position: absolute;
+    top: 42px;
+    right: 120px;
+    cursor: pointer;
+  }
+  .inputContainer {
+    border: 1px solid rgba($color: #000000, $alpha: 0.11);
+    width: 70%;
+    height: 52px;
+    position: relative;
+
+    top: 33px;
+    left: 160px;
+    border-radius: 32px;
+    img {
+      position: absolute;
+      top: 12px;
+      right: 20px;
+      cursor: pointer;
+    }
+  }
 }
 
 .text_area {
+  border-radius: 32px;
+  position: absolute;
+  left: 5px;
+  font-size: 16px;
+  border: none;
+  white-space: normal;
   width: 90%;
+  height: 52px;
+  white-space: normal;
+  &:focus {
+    outline: none;
+  }
 }
 
 .icon {
@@ -14,19 +55,25 @@
   margin-top: 35px;
   cursor: pointer;
   bottom: 10px;
-  left: 7px;
+  left: 9px;
+  color: white;
 }
 
 .btn {
-  position: inherit;
-  height: 10px;
-  max-width: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  height: 45px;
+  width: 45px;
   display: flex;
   justify-content: flex-end;
+  background-color: black;
+  border: none;
 }
 
 .send_container {
   position: absolute;
-  bottom: 100px;
-  left: 70vw;
+  bottom: 8px;
+  right: 70px;
 }

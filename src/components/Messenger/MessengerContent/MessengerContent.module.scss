@@ -1,7 +1,8 @@
 .container {
-  height: 90vh;
+  height: 70vh;
   background-image: url(../../../img/ChatBackground.jpg);
   overflow: scroll;
+  width: 75vw;
   border-top: 1px solid rgba($color: #000000, $alpha: 0.11);
   border-left: 1px solid rgba($color: #000000, $alpha: 0.11);
 }
@@ -11,11 +12,11 @@
 }
 
 .container::-webkit-scrollbar-track {
-  background-color: #cdcdcd;
+  background-color: white;
 }
 
 .container::-webkit-scrollbar-thumb {
-  background-color: #573424;
+  background-color: #cdcdcd;
   border-radius: 20px;
 }
 

@@ -1,9 +1,12 @@
 import { useState } from 'react'
-import { TextField } from '@mui/material'
 import SendIcon from '@mui/icons-material/Send'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { postMessage } from '../../../services/postMessage'
+
+import plus from '../../../img/plus.png'
+import microphone from '../../../img/Micro.png'
+import emoji from '../../../img/smile.png'
 
 import styles from './MessengerInput.module.scss'
 
@@ -20,15 +23,23 @@ function MessengerInput() {
 
   return (
     <div className={styles.text_field}>
-      <TextField
-        className={styles.text_area}
-        variant="outlined"
-        placeholder="Message for your friend"
-        value={message}
-        multiline
-        rows={3}
-        onChange={(e) => setMessage(e.target.value)}
-      />
+      <div className={styles.plusBtn}>
+        <img src={plus} alt="plus" />
+      </div>
+      <div className={styles.inputContainer}>
+        <input
+          className={styles.text_area}
+          placeholder="Start typing something..."
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+        />
+        <div>
+          <img src={emoji} alt="emoji" />
+        </div>
+      </div>
+      <div className={styles.microphone}>
+        <img src={microphone} alt="microphone" />
+      </div>
       <div className={styles.send_container}>
         <button type="submit" className={styles.btn} onClick={onSubmitHandler}>
           <SendIcon className={styles.icon} />

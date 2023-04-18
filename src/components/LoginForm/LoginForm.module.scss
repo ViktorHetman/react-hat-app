@@ -26,16 +26,16 @@ p::before {
   content: '⚠ ';
 }
 
-input {
-  display: block;
-  box-sizing: border-box;
-  width: 100%;
-  border-radius: 4px;
-  border: 1px solid white;
-  padding: 10px 15px;
-  margin-bottom: 10px;
-  font-size: 14px;
-}
+// input {
+//   display: block;
+//   box-sizing: border-box;
+//   width: 100%;
+//   border-radius: 4px;
+//   border: 1px solid white;
+//   padding: 10px 15px;
+//   margin-bottom: 10px;
+//   font-size: 14px;
+// }
 
 label {
   line-height: 2;
@@ -48,24 +48,24 @@ label {
   font-weight: 200;
 }
 
-button[type='submit'],
-input[type='submit'] {
-  background: #25ca25;
-  color: white;
-  text-transform: uppercase;
-  border: none;
-  margin-top: 40px;
-  padding: 20px;
-  font-size: 16px;
-  font-weight: 100;
-  letter-spacing: 10px;
-  width: 100%;
-}
+// button[type='submit'],
+// input[type='submit'] {
+//   background: #25ca25;
+//   color: white;
+//   text-transform: uppercase;
+//   border: none;
+//   margin-top: 40px;
+//   padding: 20px;
+//   font-size: 16px;
+//   font-weight: 100;
+//   letter-spacing: 10px;
+//   width: 100%;
+// }
 
-button[type='submit']:hover,
-input[type='submit']:hover {
-  background: #40df40;
-}
+// button[type='submit']:hover,
+// input[type='submit']:hover {
+//   background: #40df40;
+// }
 
 button[type='submit']:active,
 input[type='button']:active,
@@ -84,31 +84,31 @@ input[type='button']:hover {
   transition: 0.3s all;
 }
 
-// button[type='button'] {
-//   display: block;
-//   appearance: none;
-//   background: #e8ecf3;
-//   color: black;
-//   border: none;
-//   text-transform: uppercase;
-//   padding: 10px 20px;
-//   border-radius: 4px;
-//   &:hover {
-//     color: black;
-//   }
-// }
+button[type='button'] {
+  display: block;
+  appearance: none;
+  background: #e8ecf3;
+  color: black;
+  border: none;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  border-radius: 4px;
+  &:hover {
+    color: black;
+  }
+}
 
 hr {
   margin-top: 30px;
 }
 
-button {
-  display: block;
-  appearance: none;
-  margin-top: 40px;
-  border: 1px solid #333;
-  margin-bottom: 20px;
-  text-transform: uppercase;
-  padding: 10px 20px;
-  border-radius: 4px;
-}
+// button {
+//   display: block;
+//   appearance: none;
+//   margin-top: 40px;
+//   border: 1px solid #333;
+//   margin-bottom: 20px;
+//   text-transform: uppercase;
+//   padding: 10px 20px;
+//   border-radius: 4px;
+// }

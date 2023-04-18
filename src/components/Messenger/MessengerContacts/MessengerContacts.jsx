@@ -120,15 +120,15 @@ function MessengerContacts() {
           ? allContacts?.items
               ?.filter((item) => item.name.toLowerCase().includes(filter))
               .map((item) => (
-                <div
-                  className={styles.contacts}
+                <div>
+                  {/* className={styles.contacts}
                   key={item.id}
                   onClick={() =>
-                    userInfoHandler(item.id, item.name, item.phone)
+                    userInfoHandler(item.id, item.name, item.phone)   -- REFACTORING !!
                   }
-                >
+                
                   <MessengerContactCard name={item.name} phone={item.phone} />
-                  <hr />
+                <hr />*/}
                 </div>
               ))
           : recentContacts?.items
