@@ -1,6 +1,6 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit';
 
-import { getRecentContacts } from '../../services/getRecentContacts'
+import { getRecentContacts } from '../../services/getRecentContacts';
 
 const recentSlice = createSlice({
   name: 'recentContacts',
@@ -11,38 +11,36 @@ const recentSlice = createSlice({
   },
   reducers: {
     setOpen(state, action) {
-      state.recentContacts.items.map((item) =>
+      state.recentContacts?.items.map((item) =>
         item.id === action.payload.id
           ? ((item.isOpen = true), (item.unreadMessages = 0))
-          : (item.isOpen = false)
-      )
+          : (item.isOpen = false),
+      );
     },
     setClosed(state, action) {
-      state.recentContacts.items.map((item) =>
-        item.id === action.payload.id
-          ? (item.isClose = true)
-          : (item.isClose = false)
-      )
+      state.recentContacts?.items.map((item) =>
+        item.id === action.payload.id ? (item.isClose = true) : (item.isClose = false),
+      );
     },
   },
   extraReducers: (builder) => {
     builder
       .addCase(getRecentContacts.pending, (state) => {
-        state.status = 'pending'
+        state.status = 'pending';
       })
       .addCase(getRecentContacts.fulfilled, (state, action) => {
-        state.recentContacts = action.payload.data
-        state.recentContacts.items.map((item) => (item.isOpen = false))
-        state.recentContacts.items.map((item) => (item.isClose = false))
-        state.status = 'fulfilled'
-        state.error = null
+        state.recentContacts = action.payload.data;
+        state.recentContacts.items.map((item) => (item.isOpen = false));
+        state.recentContacts.items.map((item) => (item.isClose = false));
+        state.status = 'fulfilled';
+        state.error = null;
       })
       .addCase(getRecentContacts.rejected, (state, action) => {
-        state.status = 'rejected'
-        state.error = action.error.message
-      })
+        state.status = 'rejected';
+        state.error = action.error.message;
+      });
   },
-})
-export const { setOpen, setClosed } = recentSlice.actions
+});
+export const { setOpen, setClosed } = recentSlice.actions;
 
-export default recentSlice.reducer
+export default recentSlice.reducer;
